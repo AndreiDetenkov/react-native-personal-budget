@@ -1,7 +1,7 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import { ScrollView, Text, View, ActivityIndicator, RefreshControl } from 'react-native'
+import { ScrollView, Text, View, ActivityIndicator, RefreshControl, Alert } from 'react-native'
 
 import { RootTabScreenProps } from '../types'
 import { Transaction } from '../config/supabase/supabase.types'
@@ -10,9 +10,29 @@ import { useFetch } from '../hooks/useFetch'
 
 export default function HomeScreen({ navigation }: RootTabScreenProps<'Home'>) {
   const [refreshing, setRefreshing] = useState(false)
+  const [loading, setLoading] = useState<boolean>(false)
+  const [response, setResponse] = useState<any>([])
 
-  const { loading, response } = useFetch(getTransactions)
-  const refreshHandler = () => {}
+  const fetchData = async () => {
+    setLoading(true)
+    try {
+      const { data, error } = await getTransactions()
+      if (error) {
+        Alert.alert(JSON.stringify(error, null, 2))
+        return
+      }
+      setResponse(data)
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  useEffect(() => {
+    fetchData()
+  }, [])
+  const refreshHandler = () => {
+    fetchData()
+  }
 
   return (
     <Container>
