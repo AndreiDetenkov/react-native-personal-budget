@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
 import {SafeAreaView} from "react-native-safe-area-context";
 import styled from "styled-components";
-import {ScrollView, Text, View} from 'react-native';
+import {Alert, ScrollView, Text, View} from 'react-native';
 
 import {RootTabScreenProps} from '../types';
 import {getTransactions} from "../models/transactions";
@@ -19,7 +19,7 @@ export default function HomeScreen({ navigation }: RootTabScreenProps<'Home'>) {
   const fetchData = async () => {
     const { data, error } = await getTransactions();
     if (error) {
-      return alert(JSON.stringify(error?.message));
+      return Alert.alert(JSON.stringify(error?.message));
     }
     setList(data)
   };
