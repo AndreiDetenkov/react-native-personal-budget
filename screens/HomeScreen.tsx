@@ -1,12 +1,11 @@
-import { useEffect, useState } from 'react'
-import styled from 'styled-components'
+import React, { useEffect, useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { ScrollView, Text, View, ActivityIndicator, RefreshControl, Alert } from 'react-native'
 
 import { RootTabScreenProps } from '../types'
 import { Transaction } from '../config/supabase/supabase.types'
 import { getTransactions } from '../models/transactions'
-import { useFetch } from '../hooks/useFetch'
+import { Container } from '../ui/styles'
 
 export default function HomeScreen({ navigation }: RootTabScreenProps<'Home'>) {
   const [refreshing, setRefreshing] = useState(false)
@@ -55,10 +54,3 @@ export default function HomeScreen({ navigation }: RootTabScreenProps<'Home'>) {
     </Container>
   )
 }
-
-const Container = styled(View)`
-  display: flex;
-  flex-grow: 1;
-  padding: 0 16px;
-  background: #fff;
-`
