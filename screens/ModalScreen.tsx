@@ -1,16 +1,17 @@
 import React from 'react'
-import { Text } from '../components/Themed';
+import { Text } from '../components/Themed'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { Container } from '../ui/styles'
+import { TextInput, View } from 'react-native'
+import { FontAwesome } from '@expo/vector-icons'
+import { FormInput } from '../components/FormInput'
 
 export default function ModalScreen() {
   return (
     <Container>
       <SafeAreaView>
-        <Text>Modal</Text>
+        <FormInput label="Description" placeholder="Enter description" />
       </SafeAreaView>
     </Container>
-  );
+  )
 }
-
-
