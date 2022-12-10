@@ -10,7 +10,8 @@ export default function ModalScreen() {
   return (
     <Container>
       <SafeAreaView>
-        <FormInput label="Description" placeholder="Enter description" />
+        <FormInput label="Description" placeholder="Type description" keyboardType="default" />
+        <FormInput label="Value" placeholder="Type value" keyboardType="numeric" />
       </SafeAreaView>
     </Container>
   )
