@@ -1,7 +1,8 @@
-import { Text } from './Themed'
+import React, { ChangeEventHandler, FC } from 'react'
 import { TextInput, View } from 'react-native'
-import React, { FC } from 'react'
 import styled from 'styled-components'
+
+import { Text } from './Themed'
 import { Colors } from '../constants/Colors'
 
 type KeyboardType = 'default' | 'numeric'
@@ -9,15 +10,15 @@ interface Props {
   label: string
   placeholder: string
   keyboardType: KeyboardType
-  value: string | undefined
-  onChangeHandler: () => {}
+  value: string
+  changeHandler: ChangeEventHandler<HTMLInputElement>
 }
 export const FormInput: FC<Props> = ({
   label,
   placeholder,
   keyboardType,
   value,
-  onChangeHandler,
+  changeHandler,
 }) => {
   return (
     <Wrapper>
@@ -27,7 +28,6 @@ export const FormInput: FC<Props> = ({
         placeholder={placeholder}
         keyboardType={keyboardType}
         value={value}
-        onChange={onChangeHandler}
         cursorColor={Colors.primary}
       />
     </Wrapper>
