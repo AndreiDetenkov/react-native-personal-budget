@@ -1,10 +1,4 @@
-export type Json =
-  | string
-  | number
-  | boolean
-  | null
-  | { [key: string]: Json }
-  | Json[]
+export type Json = string | number | boolean | null | { [key: string]: Json } | Json[]
 
 export interface Database {
   public: {
@@ -13,7 +7,7 @@ export interface Database {
         Row: {
           title: string
           id: string
-          icon: string | null
+          icon?: string
         }
         Insert: {
           title: string
@@ -32,7 +26,7 @@ export interface Database {
           created_at: string
           name: string
           value: number
-          category_id: string
+          category_id?: string
         }
         Insert: {
           id?: string
