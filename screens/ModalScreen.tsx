@@ -107,7 +107,7 @@ export default function ModalScreen({ navigation }: RootTabScreenProps<'Modal'>)
               categories.map(({ id, title, isPressed }) => (
                 <Pressable onPress={() => pressHandler(id)} key={id}>
                   <Chip style={{ backgroundColor: isPressed ? '#bb86fc' : '#eee' }}>
-                    <ChipLabel style={{ color: isPressed ? '#eee' : '#000021' }}>{title}</ChipLabel>
+                    <ChipLabel style={{ color: isPressed ? '#fff' : '#000021' }}>{title}</ChipLabel>
                   </Chip>
                 </Pressable>
               ))}

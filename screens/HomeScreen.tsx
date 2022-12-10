@@ -6,6 +6,7 @@ import { RootTabScreenProps } from '../types'
 import { Transaction } from '../config/supabase/supabase.types'
 import { getTransactions } from '../models/transactions'
 import { Container } from '../ui/styles'
+import { Colors } from '../constants/Colors'
 
 export default function HomeScreen({ navigation }: RootTabScreenProps<'Home'>) {
   const [refreshing, setRefreshing] = useState(false)
@@ -37,7 +38,7 @@ export default function HomeScreen({ navigation }: RootTabScreenProps<'Home'>) {
     <Container>
       <SafeAreaView>
         {loading ? (
-          <ActivityIndicator size="large" />
+          <ActivityIndicator size="large" color={Colors.primary} />
         ) : (
           <ScrollView
             showsVerticalScrollIndicator={false}

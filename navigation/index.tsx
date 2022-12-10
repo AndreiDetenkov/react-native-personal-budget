@@ -3,14 +3,13 @@
  * https://reactnavigation.org/docs/getting-started
  *
  */
+import * as React from 'react'
 import { FontAwesome } from '@expo/vector-icons'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { DarkTheme, DefaultTheme, NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import * as React from 'react'
 import { ColorSchemeName, Pressable } from 'react-native'
 
-import Colors from '../constants/Colors'
 import useColorScheme from '../hooks/useColorScheme'
 import ModalScreen from '../screens/ModalScreen'
 import NotFoundScreen from '../screens/NotFoundScreen'
@@ -18,6 +17,7 @@ import HomeScreen from '../screens/HomeScreen'
 import TabTwoScreen from '../screens/TabTwoScreen'
 import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../types'
 import LinkingConfiguration from './LinkingConfiguration'
+import { Colors } from '../constants/Colors'
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   return (
@@ -55,13 +55,14 @@ function RootNavigator() {
 const BottomTab = createBottomTabNavigator<RootTabParamList>()
 
 function BottomTabNavigator() {
-  const colorScheme = useColorScheme()
+  // const colorScheme = useColorScheme()
 
   return (
     <BottomTab.Navigator
       initialRouteName="Home"
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme].tint,
+        tabBarActiveTintColor: Colors.primary,
+        tabBarStyle: { paddingBottom: 3 },
       }}
     >
       <BottomTab.Screen
@@ -69,7 +70,8 @@ function BottomTabNavigator() {
         component={HomeScreen}
         options={({ navigation }: RootTabScreenProps<'Home'>) => ({
           title: 'Home',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          tabBarIcon: ({ color }) => <TabBarIcon name="home" color={color} />,
+          tabBarLabel: 'Home',
           headerRight: () => (
             <Pressable
               onPress={() => navigation.navigate('Modal')}
@@ -80,7 +82,7 @@ function BottomTabNavigator() {
               <FontAwesome
                 name="plus-square-o"
                 size={30}
-                color={Colors[colorScheme].text}
+                color={Colors.primary}
                 style={{ marginRight: 15 }}
               />
             </Pressable>
@@ -106,5 +108,5 @@ function TabBarIcon(props: {
   name: React.ComponentProps<typeof FontAwesome>['name']
   color: string
 }) {
-  return <FontAwesome size={30} style={{ marginBottom: -3 }} {...props} />
+  return <FontAwesome size={28} style={{ marginBottom: -8 }} {...props} />
 }
