@@ -1,7 +1,16 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import { TextInput, View, Text, Alert, Pressable, ScrollView, Button } from 'react-native'
+import {
+  TextInput,
+  View,
+  Text,
+  Alert,
+  Pressable,
+  ScrollView,
+  Button,
+  ActivityIndicator,
+} from 'react-native'
 
 import { Colors } from '../constants/Colors'
 import { Container } from '../ui/styles'
@@ -19,6 +28,7 @@ export default function ModalScreen({ navigation }: RootTabScreenProps<'Modal'>)
   useEffect(() => {
     fetchData()
   }, [])
+
   const fetchData = async (): Promise<void> => {
     try {
       const { data, error } = await getCategories()
@@ -104,7 +114,11 @@ export default function ModalScreen({ navigation }: RootTabScreenProps<'Modal'>)
           </ScrollView>
         </ScrollWrapper>
 
-        <Button title="Submit" color="#6200ee" onPress={submitHandler} />
+        {loading ? (
+          <ActivityIndicator size="large" color="#6200ee" />
+        ) : (
+          <Button title="Submit" color="#6200ee" onPress={submitHandler} disabled={loading} />
+        )}
       </SafeAreaView>
     </Container>
   )
