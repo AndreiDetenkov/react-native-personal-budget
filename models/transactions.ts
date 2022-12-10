@@ -13,6 +13,6 @@ export async function getCategories() {
   return supabase.from('categories').select(`id,title`).order('title', { ascending: true })
 }
 
-export async function setTransaction(payload: CreateTransactionPayload) {
+export async function createTransaction(payload: CreateTransactionPayload) {
   return supabase.from('transactions').insert([payload])
 }

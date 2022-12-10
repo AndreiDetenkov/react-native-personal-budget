@@ -5,15 +5,16 @@ import { TextInput, View, Text, Alert, Pressable, ScrollView, Button } from 'rea
 
 import { Colors } from '../constants/Colors'
 import { Container } from '../ui/styles'
-import { getCategories, getTransactions, setTransaction } from '../models/transactions'
+import { getCategories, createTransaction } from '../models/transactions'
 import { CategoriesList } from '../config/supabase/supabase.types'
-import { RootStackParamList, RootTabScreenProps } from '../types'
+import { RootTabScreenProps } from '../types'
 
 export default function ModalScreen({ navigation }: RootTabScreenProps<'Modal'>) {
   const [text, setText] = useState<string>('')
   const [value, setValue] = useState<string>('')
   const [categories, setCategories] = useState<CategoriesList[]>([])
   const [categoryId, setCategoryId] = useState<string>('')
+  const [loading, setLoading] = useState<boolean>(false)
 
   useEffect(() => {
     fetchData()
@@ -51,12 +52,18 @@ export default function ModalScreen({ navigation }: RootTabScreenProps<'Modal'>)
       value: parseFloat(value),
       category_id: categoryId,
     }
-    const { error } = await setTransaction(payload)
-    if (error) {
-      Alert.alert(JSON.stringify(error?.message))
-      return
+
+    try {
+      setLoading(true)
+      const { error } = await createTransaction(payload)
+      if (error) {
+        Alert.alert(JSON.stringify(error?.message))
+        return
+      }
+      navigation.goBack()
+    } finally {
+      setLoading(false)
     }
-    navigation.goBack()
   }
 
   return (
