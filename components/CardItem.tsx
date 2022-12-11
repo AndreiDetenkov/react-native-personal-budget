@@ -1,13 +1,13 @@
 import React, { FC } from 'react'
 import { View, Text, Image } from 'react-native'
 import styled from 'styled-components'
-import { TransactionsList } from '../../config/supabase/supabase.types'
+import { TransactionsList } from '../config/supabase/supabase.types'
 
 interface Props {
   transaction: TransactionsList
 }
 
-export const AppCard: FC<Props> = ({ transaction }) => {
+export const CardItem: FC<Props> = ({ transaction }) => {
   const {
     name,
     value,
@@ -26,7 +26,7 @@ export const AppCard: FC<Props> = ({ transaction }) => {
       </CardText>
 
       <CardValue>
-        <Value>{value}</Value>
+        <Value>{value}c</Value>
       </CardValue>
     </Card>
   )

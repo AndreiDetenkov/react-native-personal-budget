@@ -1,27 +1,22 @@
 import React, { useEffect, useState } from 'react'
-import styled from 'styled-components'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import {
-  ScrollView,
-  Text,
-  View,
-  ActivityIndicator,
-  RefreshControl,
-  Alert,
-  Image,
-} from 'react-native'
+import { ScrollView, ActivityIndicator, RefreshControl, Alert } from 'react-native'
 
 import { RootTabScreenProps } from '../types'
 import { TransactionsList } from '../config/supabase/supabase.types'
 import { getTransactions } from '../models/transactions'
 import { FullLayout } from '../ui/styles'
 import { Colors } from '../constants/Colors'
-import { AppCard } from '../components/AppCard/AppCard'
+import { CardItem } from '../components/CardItem'
 
 export default function HomeScreen({ navigation }: RootTabScreenProps<'Home'>) {
   const [refreshing, setRefreshing] = useState(false)
   const [loading, setLoading] = useState<boolean>(false)
   const [response, setResponse] = useState<any>([])
+
+  useEffect(() => {
+    fetchData()
+  }, [])
 
   const fetchData = async () => {
     setLoading(true)
@@ -37,9 +32,6 @@ export default function HomeScreen({ navigation }: RootTabScreenProps<'Home'>) {
     }
   }
 
-  useEffect(() => {
-    fetchData()
-  }, [])
   const refreshHandler = () => {
     fetchData()
   }
@@ -55,7 +47,7 @@ export default function HomeScreen({ navigation }: RootTabScreenProps<'Home'>) {
             refreshControl={<RefreshControl refreshing={refreshing} onRefresh={refreshHandler} />}
           >
             {response.map((transaction: TransactionsList) => (
-              <AppCard transaction={transaction} key={transaction.id} />
+              <CardItem transaction={transaction} key={transaction.id} />
             ))}
           </ScrollView>
         )}
