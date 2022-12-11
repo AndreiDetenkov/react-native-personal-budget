@@ -8,6 +8,7 @@ import { getTransactions } from '../models/transactions'
 import { FullLayout } from '../ui/styles'
 import { Colors } from '../constants/Colors'
 import { CardItem } from '../components/CardItem'
+import { CardTotal } from '../components/CardTotal'
 
 export default function HomeScreen({ navigation }: RootTabScreenProps<'Home'>) {
   const [refreshing, setRefreshing] = useState(false)
@@ -42,14 +43,17 @@ export default function HomeScreen({ navigation }: RootTabScreenProps<'Home'>) {
         {loading ? (
           <ActivityIndicator size="large" color={Colors.primary} />
         ) : (
-          <ScrollView
-            showsVerticalScrollIndicator={false}
-            refreshControl={<RefreshControl refreshing={refreshing} onRefresh={refreshHandler} />}
-          >
-            {response.map((transaction: TransactionsList) => (
-              <CardItem transaction={transaction} key={transaction.id} />
-            ))}
-          </ScrollView>
+          <>
+            <CardTotal total="154357" />
+            <ScrollView
+              showsVerticalScrollIndicator={false}
+              refreshControl={<RefreshControl refreshing={refreshing} onRefresh={refreshHandler} />}
+            >
+              {response.map((transaction: TransactionsList) => (
+                <CardItem transaction={transaction} key={transaction.id} />
+              ))}
+            </ScrollView>
+          </>
         )}
       </SafeAreaView>
     </FullLayout>

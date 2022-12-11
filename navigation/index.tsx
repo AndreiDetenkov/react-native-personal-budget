@@ -55,8 +55,6 @@ function RootNavigator() {
 const BottomTab = createBottomTabNavigator<RootTabParamList>()
 
 function BottomTabNavigator() {
-  // const colorScheme = useColorScheme()
-
   return (
     <BottomTab.Navigator
       initialRouteName="Home"
@@ -83,7 +81,7 @@ function BottomTabNavigator() {
                 name="plus-square-o"
                 size={30}
                 color={Colors.primary}
-                style={{ marginRight: 15 }}
+                style={{ marginRight: 16 }}
               />
             </Pressable>
           ),
