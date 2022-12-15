@@ -6,7 +6,7 @@ type Categories = Database['public']['Tables']['categories']['Row']
 
 type TransactionsResponse = Awaited<ReturnType<typeof getTransactions>>
 export type TransactionsResponseSuccess = TransactionsResponse['data']
-export interface TransactionsList extends Transaction {
+export interface TransactionsItem extends Transaction {
   categories: Categories
 }
 

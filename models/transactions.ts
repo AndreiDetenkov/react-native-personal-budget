@@ -1,12 +1,21 @@
 import { supabase } from '../config/supabase/supabase'
 import { CreateTransactionPayload } from '../config/supabase/supabase.types'
+import { TransactionByRangePayload } from '../features/transaction/transactionSlice.types'
 
 export async function getTransactions() {
   return supabase
     .from('transactions')
     .select(`id,name,value,created_at, categories(title,id,icon)`)
     .order('created_at', { ascending: false })
-    .limit(20)
+}
+
+export async function getTransactionsByRange({ from, to }: TransactionByRangePayload) {
+  return supabase
+    .from('transactions')
+    .select(`id,name,value,created_at, categories(id,title,icon)`)
+    .gt('created_at', from)
+    .lt('created_at', to)
+    .order('created_at', { ascending: false })
 }
 
 export async function getCategories() {

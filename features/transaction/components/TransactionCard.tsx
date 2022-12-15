@@ -1,13 +1,13 @@
 import React, { FC } from 'react'
 import { View, Text, Image } from 'react-native'
 import styled from 'styled-components'
-import { TransactionsList } from '../config/supabase/supabase.types'
+import { TransactionsItem } from '../../../config/supabase/supabase.types'
 
 interface Props {
-  transaction: TransactionsList
+  transaction: TransactionsItem
 }
 
-export const CardItem: FC<Props> = ({ transaction }) => {
+export const TransactionCard: FC<Props> = ({ transaction }) => {
   const {
     name,
     value,
