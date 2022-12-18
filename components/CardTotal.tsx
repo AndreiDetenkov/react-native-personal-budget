@@ -1,10 +1,11 @@
 import { View, Text } from 'react-native'
 import React, { FC } from 'react'
 import styled from 'styled-components'
+
 import { Container } from '../ui/styles'
 
 interface Props {
-  total: string
+  total: number
 }
 
 export const CardTotal: FC<Props> = ({ total }) => {

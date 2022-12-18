@@ -1,16 +1,18 @@
 import React, { FC, useState } from 'react'
+import { useSelector } from 'react-redux'
+import { RefreshControl, ScrollView } from 'react-native'
 
-import { RefreshControl, ScrollView, Text, View } from 'react-native'
 import { TransactionsItem } from '../../../config/supabase/supabase.types'
 import { TransactionCard } from './TransactionCard'
-import { useAppDispatch, useAppSelector } from '../../../app/hooks'
+import { useAppDispatch } from '../../../app/hooks'
 import { getTransactionsRequest } from '../transactionSlice.actions'
+import { transactionsSelector } from '../transactionSlice.selectors'
 
 export const TransactionList: FC = () => {
   const [refreshing] = useState(false)
 
-  const transactions = useAppSelector(({ transactions }) => transactions.transactions)
   const dispatch = useAppDispatch()
+  const transactions = useSelector(transactionsSelector)
 
   const refreshHandler = () => {
     dispatch(getTransactionsRequest())

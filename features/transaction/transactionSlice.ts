@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+
 import { TransactionsResponseSuccess } from '../../config/supabase/supabase.types'
 import { getTransactionsRequest } from './transactionSlice.actions'
 import { TransactionState } from './transactionSlice.types'
@@ -28,7 +29,9 @@ export const transactionSlice = createSlice({
   },
 })
 
-// export default transactionSlice.reducer
+export type TransactionSliceMapType = {
+  [transactionSlice.name]: TransactionState
+}
 export const { reducer: transactionStateReducer, name: translationStateName } = {
   ...transactionSlice,
 }
