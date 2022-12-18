@@ -17,6 +17,8 @@ import { Container } from '../ui/styles'
 import { getCategories, createTransaction } from '../models/transactions'
 import { CategoriesList } from '../config/supabase/supabase.types'
 import { RootTabScreenProps } from '../types'
+import { useAppDispatch } from '../app/hooks'
+import { getTransactionsRequest } from '../features/transaction/transactionSlice.actions'
 
 export default function ModalScreen({ navigation }: RootTabScreenProps<'Modal'>) {
   const [text, setText] = useState<string>('')
@@ -24,6 +26,8 @@ export default function ModalScreen({ navigation }: RootTabScreenProps<'Modal'>)
   const [categories, setCategories] = useState<CategoriesList[]>([])
   const [categoryId, setCategoryId] = useState<string>('')
   const [loading, setLoading] = useState<boolean>(false)
+
+  const dispatch = useAppDispatch()
 
   useEffect(() => {
     fetchData()
@@ -70,6 +74,7 @@ export default function ModalScreen({ navigation }: RootTabScreenProps<'Modal'>)
         Alert.alert(JSON.stringify(error?.message))
         return
       }
+      dispatch(getTransactionsRequest())
       navigation.goBack()
     } finally {
       setLoading(false)
