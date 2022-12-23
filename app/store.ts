@@ -3,10 +3,12 @@ import {
   transactionStateReducer,
   translationStateName,
 } from '../features/transaction/transactionSlice'
+import { categoryStateName, categoryStateReducer } from '../features/category/categorySlice'
 
 export const store = configureStore({
   reducer: {
     [translationStateName]: transactionStateReducer,
+    [categoryStateName]: categoryStateReducer,
   },
 })
 

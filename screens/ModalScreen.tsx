@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import {
@@ -14,50 +14,27 @@ import {
 
 import { Colors } from '../constants/Colors'
 import { Container } from '../ui/styles'
-import { getCategories, createTransaction } from '../models/transactions'
-import { CategoriesList } from '../config/supabase/supabase.types'
+import { createTransaction } from '../models/transactions'
 import { RootTabScreenProps } from '../types'
-import { useAppDispatch } from '../app/hooks'
+import { useAppDispatch, useAppSelector } from '../app/hooks'
 import { getTransactionsRequest } from '../features/transaction/transactionSlice.actions'
+import {
+  categoriesSelector,
+  categoryIdSelector,
+} from '../features/category/categorySlice.selectors'
+import { setCategory } from '../features/category/categorySlice'
 
 export default function ModalScreen({ navigation }: RootTabScreenProps<'Modal'>) {
   const [text, setText] = useState<string>('')
   const [value, setValue] = useState<string>('')
-  const [categories, setCategories] = useState<CategoriesList[]>([])
-  const [categoryId, setCategoryId] = useState<string>('')
   const [loading, setLoading] = useState<boolean>(false)
 
   const dispatch = useAppDispatch()
-
-  useEffect(() => {
-    fetchData()
-  }, [])
-
-  const fetchData = async (): Promise<void> => {
-    try {
-      const { data, error } = await getCategories()
-      if (error) {
-        Alert.alert(JSON.stringify(error, null, 2))
-        return
-      }
-      if (data?.length) {
-        const result = formatCategories(data)
-        setCategories(result)
-      }
-    } catch (e) {}
-  }
-
-  const formatCategories = (categories: CategoriesList[]) => {
-    return categories?.map((item) => {
-      return { ...item, isPressed: false }
-    })
-  }
+  const categories = useAppSelector(categoriesSelector)
+  const categoryId = useAppSelector(categoryIdSelector)
 
   const pressHandler = (categoryId: string): void => {
-    categories.forEach((item) => {
-      item.isPressed = item.id === categoryId
-    })
-    setCategoryId(categoryId)
+    dispatch(setCategory(categoryId))
   }
 
   const submitHandler = async () => {
