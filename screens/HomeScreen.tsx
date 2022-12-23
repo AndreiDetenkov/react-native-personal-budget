@@ -17,7 +17,6 @@ import {
 
 export default function HomeScreen({ navigation }: RootTabScreenProps<'Home'>) {
   const dispatch = useAppDispatch()
-  const sum = useSelector(transactionsSumSelector)
   const loading = useSelector(transactionsLoadingSelector)
 
   useEffect(() => {
@@ -27,14 +26,7 @@ export default function HomeScreen({ navigation }: RootTabScreenProps<'Home'>) {
   return (
     <FullLayout>
       <SafeAreaView>
-        {loading ? (
-          <ActivityIndicator size="large" color={Colors.primary} />
-        ) : (
-          <>
-            <CardTotal total={sum} />
-            <TransactionList />
-          </>
-        )}
+        {loading ? <ActivityIndicator size="large" color={Colors.primary} /> : <TransactionList />}
       </SafeAreaView>
     </FullLayout>
   )

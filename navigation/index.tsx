@@ -67,7 +67,7 @@ function BottomTabNavigator() {
         name="Home"
         component={HomeScreen}
         options={({ navigation }: RootTabScreenProps<'Home'>) => ({
-          title: 'Home',
+          title: 'Transactions',
           tabBarIcon: ({ color }) => <TabBarIcon name="home" color={color} />,
           tabBarLabel: 'Home',
           headerRight: () => (
@@ -77,12 +77,7 @@ function BottomTabNavigator() {
                 opacity: pressed ? 0.5 : 1,
               })}
             >
-              <FontAwesome
-                name="plus-square-o"
-                size={30}
-                color={Colors.primary}
-                style={{ marginRight: 16 }}
-              />
+              <FontAwesome name="plus-square-o" size={30} style={{ marginRight: 16 }} />
             </Pressable>
           ),
         })}
