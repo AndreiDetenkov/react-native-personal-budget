@@ -62,6 +62,7 @@ const CardValue = styled(View)`
 
 const Title = styled(Text)`
   font-size: 16px;
+  color: #333;
 `
 const Category = styled(Text)`
   font-size: 12px;

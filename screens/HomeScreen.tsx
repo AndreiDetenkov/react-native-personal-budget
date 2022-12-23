@@ -6,14 +6,10 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import { RootTabScreenProps } from '../types'
 import { FullLayout } from '../ui/styles'
 import { Colors } from '../constants/Colors'
-import { CardTotal } from '../components/CardTotal'
 import { useAppDispatch } from '../app/hooks'
 import { getTransactionsRequest } from '../features/transaction/transactionSlice.actions'
 import { TransactionList } from '../features/transaction/components/TransactionList'
-import {
-  transactionsLoadingSelector,
-  transactionsSumSelector,
-} from '../features/transaction/transactionSlice.selectors'
+import { transactionsLoadingSelector } from '../features/transaction/transactionSlice.selectors'
 
 export default function HomeScreen({ navigation }: RootTabScreenProps<'Home'>) {
   const dispatch = useAppDispatch()
