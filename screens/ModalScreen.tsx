@@ -18,10 +18,7 @@ import { createTransaction } from '../models/transactions'
 import { RootTabScreenProps } from '../types'
 import { useAppDispatch, useAppSelector } from '../app/hooks'
 import { getTransactionsRequest } from '../features/transaction/transactionSlice.actions'
-import {
-  categoriesSelector,
-  categoryIdSelector,
-} from '../features/category/categorySlice.selectors'
+import { categoriesSelector } from '../features/category/categorySlice.selectors'
 import { setCategory } from '../features/category/categorySlice'
 
 export default function ModalScreen({ navigation }: RootTabScreenProps<'Modal'>) {
@@ -30,8 +27,7 @@ export default function ModalScreen({ navigation }: RootTabScreenProps<'Modal'>)
   const [loading, setLoading] = useState<boolean>(false)
 
   const dispatch = useAppDispatch()
-  const categories = useAppSelector(categoriesSelector)
-  const categoryId = useAppSelector(categoryIdSelector)
+  const { categories, categoryId } = useAppSelector(categoriesSelector)
 
   const pressHandler = (categoryId: string): void => {
     dispatch(setCategory(categoryId))
