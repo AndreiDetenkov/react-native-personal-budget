@@ -1,16 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import {
-  TextInput,
-  View,
-  Text,
-  Alert,
-  Pressable,
-  ScrollView,
-  Button,
-  ActivityIndicator,
-} from 'react-native'
+import { TextInput, View, Text, Alert, Button, ActivityIndicator } from 'react-native'
 
 import { Colors } from '../constants/Colors'
 import { Container } from '../ui/styles'
@@ -19,7 +10,7 @@ import { RootTabScreenProps } from '../types'
 import { useAppDispatch, useAppSelector } from '../app/hooks'
 import { getTransactionsRequest } from '../features/transaction/transactionSlice.actions'
 import { categoriesSelector } from '../features/category/categorySlice.selectors'
-import { setCategory } from '../features/category/categorySlice'
+import { CategoriesList } from '../features/category/components/CategoriesList'
 
 export default function ModalScreen({ navigation }: RootTabScreenProps<'Modal'>) {
   const [text, setText] = useState<string>('')
@@ -27,11 +18,7 @@ export default function ModalScreen({ navigation }: RootTabScreenProps<'Modal'>)
   const [loading, setLoading] = useState<boolean>(false)
 
   const dispatch = useAppDispatch()
-  const { categories, categoryId } = useAppSelector(categoriesSelector)
-
-  const pressHandler = (categoryId: string): void => {
-    dispatch(setCategory(categoryId))
-  }
+  const { categoryId } = useAppSelector(categoriesSelector)
 
   const submitHandler = async () => {
     const payload = {
@@ -67,7 +54,6 @@ export default function ModalScreen({ navigation }: RootTabScreenProps<'Modal'>)
             cursorColor={Colors.secondary}
           />
         </Wrapper>
-
         <Wrapper>
           <Text>Value</Text>
           <Input
@@ -80,16 +66,7 @@ export default function ModalScreen({ navigation }: RootTabScreenProps<'Modal'>)
         </Wrapper>
 
         <ScrollWrapper>
-          <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-            {categories &&
-              categories.map(({ id, title, isPressed }) => (
-                <Pressable onPress={() => pressHandler(id)} key={id}>
-                  <Chip style={{ backgroundColor: isPressed ? '#bb86fc' : '#eee' }}>
-                    <ChipLabel style={{ color: isPressed ? '#fff' : '#000021' }}>{title}</ChipLabel>
-                  </Chip>
-                </Pressable>
-              ))}
-          </ScrollView>
+          <CategoriesList />
         </ScrollWrapper>
 
         {loading ? (
@@ -114,19 +91,4 @@ const Input = styled(TextInput)`
   border: 1px solid #333;
   border-radius: 4px;
   padding: 8px 16px;
-`
-
-const Chip = styled(View)`
-  height: 32px;
-  padding: 0 16px;
-  text-align: center;
-  margin-right: 16px;
-  border-radius: 100px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`
-
-const ChipLabel = styled(Text)`
-  font-size: 13px;
 `
