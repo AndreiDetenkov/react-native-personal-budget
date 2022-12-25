@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { CategoriesResponseSuccess, CategoryItem } from '../../config/supabase/supabase.types'
-import { getCategoriesRequest } from './categorySlice.actions'
+import { CategoriesResponseSuccess, CategoryItem } from '../../../config/supabase/supabase.types'
+import { getCategoriesRequest } from './categories.actions'
 
 type CategoryState = {
   categories: CategoryItem[]
@@ -10,7 +10,7 @@ const initialState: CategoryState = {
   categories: [],
 }
 
-export const categorySlice = createSlice({
+export const categories = createSlice({
   name: 'categories',
   initialState,
   reducers: {
@@ -34,11 +34,11 @@ export const categorySlice = createSlice({
 })
 
 export type CategoryStateMapType = {
-  [categorySlice.name]: CategoryState
+  [categories.name]: CategoryState
 }
 
 export const {
   reducer: categoryStateReducer,
   name: categoryStateName,
   actions: { setCategory },
-} = { ...categorySlice }
+} = { ...categories }

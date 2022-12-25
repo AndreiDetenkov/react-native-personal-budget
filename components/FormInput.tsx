@@ -3,7 +3,7 @@ import { TextInput, View } from 'react-native'
 import styled from 'styled-components'
 
 import { Text } from './Themed'
-import { Colors } from '../constants/Colors'
+import { Colors } from '../shared/constants/Colors'
 
 type KeyboardType = 'default' | 'numeric'
 interface Props {
@@ -13,13 +13,7 @@ interface Props {
   value: string
   changeHandler: ChangeEventHandler<HTMLInputElement>
 }
-export const FormInput: FC<Props> = ({
-  label,
-  placeholder,
-  keyboardType,
-  value,
-  changeHandler,
-}) => {
+export const FormInput: FC<Props> = ({ label, placeholder, keyboardType, value }) => {
   return (
     <Wrapper>
       <Text>{label}</Text>

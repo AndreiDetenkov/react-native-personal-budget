@@ -4,7 +4,7 @@ import { RefreshControl, ScrollView } from 'react-native'
 
 import { TransactionsItem } from '../../../config/supabase/supabase.types'
 import { TransactionCard } from './TransactionCard'
-import { useAppDispatch } from '../../../app/hooks'
+import { useAppDispatch } from '../../../app/store/store.hooks'
 import { getTransactionsRequest } from '../transactionSlice.actions'
 import { transactionsSelector, transactionsSumSelector } from '../transactionSlice.selectors'
 import { TransactionTotal } from './TransactionTotal'

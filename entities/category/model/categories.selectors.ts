@@ -1,5 +1,5 @@
 import { createSelector } from '@reduxjs/toolkit'
-import { CategoryStateMapType } from './categorySlice'
+import { CategoryStateMapType } from './categories'
 
 export const categoryListSelector = createSelector(
   (state: CategoryStateMapType) => state.categories.categories,

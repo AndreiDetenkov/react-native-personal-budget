@@ -3,21 +3,22 @@ import styled from 'styled-components'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { TextInput, View, Text, Alert, Button, ActivityIndicator } from 'react-native'
 
-import { Colors } from '../constants/Colors'
-import { Container } from '../ui/styles'
-import { createTransaction } from '../models/transactions'
-import { RootTabScreenProps } from '../types'
-import { useAppDispatch, useAppSelector } from '../app/hooks'
-import { getTransactionsRequest } from '../features/transaction/transactionSlice.actions'
-import { categoriesSelector } from '../features/category/categorySlice.selectors'
-import { CategoriesList } from '../features/category/components/CategoriesList'
+import { Colors } from '../../shared/constants/Colors'
+import { Container } from '../../shared/styled'
+import { createTransaction } from '../../models/transactions'
+import { RootTabScreenProps } from '../../app/navigation/types'
+import { useAppDispatch, useAppSelector } from '../../app/store/store.hooks'
+import { getTransactionsRequest } from '../../entities/transaction/transactionSlice.actions'
+import { categoryModel, CategoriesList } from '../../entities/category'
 
-export default function ModalScreen({ navigation }: RootTabScreenProps<'Modal'>) {
+export function ModalScreen({ navigation }: RootTabScreenProps<'Modal'>) {
   const [text, setText] = useState<string>('')
   const [value, setValue] = useState<string>('')
   const [loading, setLoading] = useState<boolean>(false)
 
   const dispatch = useAppDispatch()
+
+  const { categoriesSelector } = categoryModel
   const { categoryId } = useAppSelector(categoriesSelector)
 
   const submitHandler = async () => {

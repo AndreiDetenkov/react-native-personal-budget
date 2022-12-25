@@ -16,7 +16,7 @@ export const transactionsSumSelector = createSelector(
   (state: TransactionSliceMapType) => state.transactions.transactions,
   (transactions) => {
     return transactions.reduce((acc, item) => {
-      return (acc += item.value)
+      return acc + item.value
     }, 0)
   }
 )

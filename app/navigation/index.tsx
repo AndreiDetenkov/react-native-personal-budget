@@ -10,14 +10,10 @@ import { DarkTheme, DefaultTheme, NavigationContainer } from '@react-navigation/
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { ColorSchemeName, Pressable } from 'react-native'
 
-import useColorScheme from '../hooks/useColorScheme'
-import ModalScreen from '../screens/ModalScreen'
-import NotFoundScreen from '../screens/NotFoundScreen'
-import HomeScreen from '../screens/HomeScreen'
-import TabTwoScreen from '../screens/TabTwoScreen'
-import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../types'
+import { TransactionsScreen, CategoriesScreen, ModalScreen, NotFoundScreen } from '../../screens'
+import { RootStackParamList, RootTabParamList, RootTabScreenProps } from './types'
 import LinkingConfiguration from './LinkingConfiguration'
-import { Colors } from '../constants/Colors'
+import { Colors } from '../../shared/constants/Colors'
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   return (
@@ -57,16 +53,16 @@ const BottomTab = createBottomTabNavigator<RootTabParamList>()
 function BottomTabNavigator() {
   return (
     <BottomTab.Navigator
-      initialRouteName="Home"
+      initialRouteName="Transactions"
       screenOptions={{
         tabBarActiveTintColor: Colors.primary,
         tabBarStyle: { paddingBottom: 3 },
       }}
     >
       <BottomTab.Screen
-        name="Home"
-        component={HomeScreen}
-        options={({ navigation }: RootTabScreenProps<'Home'>) => ({
+        name="Transactions"
+        component={TransactionsScreen}
+        options={({ navigation }: RootTabScreenProps<'Transactions'>) => ({
           title: 'Transactions',
           tabBarIcon: ({ color }) => <TabBarIcon name="home" color={color} />,
           headerRight: () => (
@@ -82,8 +78,8 @@ function BottomTabNavigator() {
         })}
       />
       <BottomTab.Screen
-        name="TabTwo"
-        component={TabTwoScreen}
+        name="Categories"
+        component={CategoriesScreen}
         options={{
           title: 'Categories',
           tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,

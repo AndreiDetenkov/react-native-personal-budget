@@ -2,9 +2,9 @@ import React, { FC } from 'react'
 import styled from 'styled-components'
 
 import { Pressable, ScrollView, Text, View } from 'react-native'
-import { useAppDispatch, useAppSelector } from '../../../app/hooks'
-import { categoriesSelector } from '../categorySlice.selectors'
-import { setCategory } from '../categorySlice'
+import { useAppDispatch, useAppSelector } from '../../../app/store/store.hooks'
+import { categoriesSelector } from '../model'
+import { setCategory } from '../model'
 
 export const CategoriesList: FC = () => {
   const dispatch = useAppDispatch()
