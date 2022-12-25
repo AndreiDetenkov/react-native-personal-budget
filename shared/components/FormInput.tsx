@@ -3,7 +3,7 @@ import { TextInput, View } from 'react-native'
 import styled from 'styled-components'
 
 import { Text } from './Themed'
-import { Colors } from '../shared/constants/Colors'
+import { Colors } from '../constants/Colors'
 
 type KeyboardType = 'default' | 'numeric'
 interface Props {

@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native'
 
-import EditScreenInfo from '../../components/EditScreenInfo'
-import { Text, View } from '../../components/Themed'
+import EditScreenInfo from '../../shared/components/EditScreenInfo'
+import { Text, View } from '../../shared/components/Themed'
 
 export function CategoriesScreen() {
   return (
