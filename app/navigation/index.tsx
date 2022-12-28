@@ -55,7 +55,7 @@ function BottomTabNavigator() {
     <BottomTab.Navigator
       initialRouteName="Transactions"
       screenOptions={{
-        tabBarActiveTintColor: Colors.primary,
+        tabBarActiveTintColor: Colors.text,
         tabBarStyle: { paddingBottom: 3 },
       }}
     >

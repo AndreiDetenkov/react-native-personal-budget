@@ -21,4 +21,5 @@ export default {
 export const Colors = {
   primary: '#6200ee',
   secondary: '#BB86FC',
+  text: '#333',
 }
