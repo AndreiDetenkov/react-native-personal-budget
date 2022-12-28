@@ -1,9 +1,10 @@
-module.exports = function(api) {
-  api.cache(true);
+module.exports = function (api) {
+  api.cache(true)
   return {
     presets: ['babel-preset-expo'],
-    "plugins": [
-      ["module:react-native-dotenv", { safe: true }]
-    ]
-  };
-};
+    plugins: [
+      ['module:react-native-dotenv', { safe: true }],
+      ['@babel/plugin-proposal-export-namespace-from'],
+    ],
+  }
+}
