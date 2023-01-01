@@ -4,7 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 
 import { FullLayout } from '../../shared/styled'
 import { Colors } from '../../shared/constants/Colors'
-import { useAppDispatch, useAppSelector } from '../../app/store/store.hooks'
+import { useAppDispatch, useAppSelector } from '../../app/store'
 import { TransactionList } from '../../entities/transaction/ui/TransactionList'
 import { transactionsLoadingSelector } from '../../entities/transaction/transactionSlice.selectors'
 import { getTransactionsRequest } from '../../entities/transaction/transactionSlice.actions'
