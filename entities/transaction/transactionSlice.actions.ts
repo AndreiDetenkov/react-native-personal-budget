@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { getTransactions, getTransactionsByRange } from '../../models/transactions'
-import { TransactionsResponseSuccess } from '../../config/supabase/supabase.types'
+import { TransactionsResponseSuccess } from '../../shared/config/supabase/supabase.types'
 import { TransactionByRangePayload } from './transactionSlice.types'
 
 export const getTransactionsRequest = createAsyncThunk<TransactionsResponseSuccess>(

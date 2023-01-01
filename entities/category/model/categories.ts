@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { CategoriesResponseSuccess, CategoryItem } from '../../../config/supabase/supabase.types'
+
+import { CategoriesResponseSuccess, CategoryItem } from '../api'
 import { getCategoriesRequest } from './categories.actions'
 
 type CategoryState = {

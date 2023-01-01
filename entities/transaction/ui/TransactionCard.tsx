@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
-import { View, Text, Image } from 'react-native'
+import { Image, Text, View } from 'react-native'
 import styled from 'styled-components'
-import { TransactionsItem } from '../../../config/supabase/supabase.types'
+import { TransactionsItem } from '../../../shared/config/supabase/supabase.types'
 
 interface Props {
   transaction: TransactionsItem

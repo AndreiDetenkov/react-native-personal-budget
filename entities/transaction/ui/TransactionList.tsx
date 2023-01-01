@@ -2,7 +2,7 @@ import React, { FC, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { RefreshControl, ScrollView } from 'react-native'
 
-import { TransactionsItem } from '../../../config/supabase/supabase.types'
+import { TransactionsItem } from '../../../shared/config/supabase/supabase.types'
 import { TransactionCard } from './TransactionCard'
 import { useAppDispatch } from '../../../app/store/store.hooks'
 import { getTransactionsRequest } from '../transactionSlice.actions'

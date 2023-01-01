@@ -1,5 +1,5 @@
-import { supabase } from '../config/supabase/supabase'
-import { CreateTransactionPayload } from '../config/supabase/supabase.types'
+import { supabase } from '../shared/config'
+import { CreateTransactionPayload } from '../shared/config/supabase/supabase.types'
 import { TransactionByRangePayload } from '../entities/transaction/transactionSlice.types'
 
 export async function getTransactions() {
@@ -7,6 +7,7 @@ export async function getTransactions() {
     .from('transactions')
     .select(`id,name,value,created_at, categories(title,id,icon)`)
     .order('created_at', { ascending: false })
+    .limit(20)
 }
 
 export async function getTransactionsByRange({ from, to }: TransactionByRangePayload) {
@@ -16,10 +17,6 @@ export async function getTransactionsByRange({ from, to }: TransactionByRangePay
     .gt('created_at', from)
     .lt('created_at', to)
     .order('created_at', { ascending: false })
-}
-
-export async function getCategories() {
-  return supabase.from('categories').select(`id,title`).order('title', { ascending: true })
 }
 
 export async function createTransaction(payload: CreateTransactionPayload) {

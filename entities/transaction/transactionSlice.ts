@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-import { TransactionsResponseSuccess } from '../../config/supabase/supabase.types'
+import { TransactionsResponseSuccess } from '../../shared/config/supabase/supabase.types'
 import { getTransactionsRequest } from './transactionSlice.actions'
 import { TransactionState } from './transactionSlice.types'
 

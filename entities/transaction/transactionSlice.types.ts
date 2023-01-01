@@ -1,4 +1,4 @@
-import { TransactionsItem } from '../../config/supabase/supabase.types'
+import { TransactionsItem } from '../../shared/config/supabase/supabase.types'
 
 export interface TransactionState {
   transactions: TransactionsItem[]
