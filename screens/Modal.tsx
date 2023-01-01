@@ -3,13 +3,13 @@ import styled from 'styled-components'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { ActivityIndicator, Alert, Button, Text, TextInput, View } from 'react-native'
 
-import { Colors } from '../../shared/constants/Colors'
-import { Container } from '../../shared/styled'
-import { createTransaction } from '../../models/transactions'
-import { RootTabScreenProps } from '../../app/navigation/types'
-import { useAppDispatch, useAppSelector } from '../../app/store'
-import { getTransactionsRequest } from '../../entities/transaction/transactionSlice.actions'
-import { CategoriesList, categoryModel } from '../../entities/category'
+import { Colors } from '../shared/constants/Colors'
+import { Container } from '../shared/styled'
+import { createTransaction } from '../models/transactions'
+import { RootTabScreenProps } from '../app/navigation/types'
+import { useAppDispatch, useAppSelector } from '../app/store'
+import { getTransactionsRequest } from '../entities/transaction/transactionSlice.actions'
+import { CategoriesList, categoryModel } from '../entities/category'
 
 export function ModalScreen({ navigation }: RootTabScreenProps<'Modal'>) {
   const [text, setText] = useState<string>('')
