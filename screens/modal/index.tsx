@@ -89,7 +89,7 @@ const ScrollWrapper = styled(View)`
 `
 
 const Input = styled(TextInput)`
-  border: 1px solid #333;
+  border: 1px solid ${Colors.text};
   border-radius: 4px;
   padding: 8px 16px;
 `

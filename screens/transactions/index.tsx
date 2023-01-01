@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useCallback, useEffect } from 'react'
 import { ActivityIndicator } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
@@ -7,23 +7,33 @@ import { Colors } from '../../shared/constants/Colors'
 import { useAppDispatch, useAppSelector } from '../../app/store'
 import { TransactionList } from '../../entities/transaction/ui/TransactionList'
 import { transactionsLoadingSelector } from '../../entities/transaction/transactionSlice.selectors'
-import { getTransactionsRequest } from '../../entities/transaction/transactionSlice.actions'
+import { getTransactionsByRangeRequest } from '../../entities/transaction/transactionSlice.actions'
 import { categoryModel } from '../../entities/category'
+import { getCurrentMonthDates } from '../../shared/dates'
 
 export function TransactionsScreen() {
   const { getCategoriesRequest } = categoryModel
-  const dispatch = useAppDispatch()
   const loading = useAppSelector(transactionsLoadingSelector)
+  const dispatch = useAppDispatch()
+
+  const getTransactionsList = useCallback(() => {
+    const { startDate, endDate } = getCurrentMonthDates()
+    dispatch(getTransactionsByRangeRequest({ from: startDate, to: endDate }))
+  }, [])
 
   useEffect(() => {
-    dispatch(getTransactionsRequest())
+    getTransactionsList()
     dispatch(getCategoriesRequest())
   }, [])
 
   return (
     <FullLayout>
       <SafeAreaView>
-        {loading ? <ActivityIndicator size="large" color={Colors.primary} /> : <TransactionList />}
+        {loading ? (
+          <ActivityIndicator size="large" color={Colors.primary} />
+        ) : (
+          <TransactionList getData={getTransactionsList} />
+        )}
       </SafeAreaView>
     </FullLayout>
   )

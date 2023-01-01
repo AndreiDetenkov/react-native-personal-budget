@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 import { TransactionsResponseSuccess } from '../../shared/config/supabase/supabase.types'
-import { getTransactionsRequest } from './transactionSlice.actions'
+import { getTransactionsByRangeRequest } from './transactionSlice.actions'
 import { TransactionState } from './transactionSlice.types'
 
 const initialState: TransactionState = {
@@ -15,11 +15,11 @@ export const transactionSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(getTransactionsRequest.pending, (state) => {
+      .addCase(getTransactionsByRangeRequest.pending, (state) => {
         state.isLoading = true
       })
       .addCase(
-        getTransactionsRequest.fulfilled,
+        getTransactionsByRangeRequest.fulfilled,
         (state, action: PayloadAction<TransactionsResponseSuccess>) => {
           state.isLoading = false
           // @ts-ignore

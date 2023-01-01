@@ -2,6 +2,7 @@ import React, { FC } from 'react'
 import { Image, Text, View } from 'react-native'
 import styled from 'styled-components'
 import { TransactionsItem } from '../../../shared/config/supabase/supabase.types'
+import { Colors } from '../../../shared/constants/Colors'
 
 interface Props {
   transaction: TransactionsItem
@@ -62,7 +63,7 @@ const CardValue = styled(View)`
 
 const Title = styled(Text)`
   font-size: 16px;
-  color: #333;
+  color: ${Colors.text};
 `
 const Category = styled(Text)`
   font-size: 12px;
