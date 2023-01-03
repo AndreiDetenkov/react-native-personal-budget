@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useSelector } from 'react-redux'
+import { ScrollView } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
 import { Container } from '../shared/styled'
 import { transactionsByCategory } from '../entities/transaction/transactionSlice.selectors'
-import { CategoryCard } from '../entities/category'
-import { ScrollView } from 'react-native'
+import { CategoryCard, ICategoryCard } from '../entities/category'
 
 export function CategoriesScreen() {
   const list = useSelector(transactionsByCategory)
@@ -13,14 +13,12 @@ export function CategoriesScreen() {
     return b.value > a.value
   })
 
-  useEffect(() => {}, [])
-
   return (
     <Container>
       <SafeAreaView>
         <ScrollView showsVerticalScrollIndicator={false}>
-          {list.map(({ value, categories }: any) => (
-            <CategoryCard categories={categories} value={value} />
+          {list.map(({ value, categories }: ICategoryCard) => (
+            <CategoryCard categories={categories} value={value} key={categories?.title} />
           ))}
         </ScrollView>
       </SafeAreaView>

@@ -6,11 +6,11 @@ import { CategoryItem } from '../api'
 import { Colors } from '../../../shared/constants/Colors'
 import { CardIcon, CardText, CardValue } from '../../../shared/styled'
 
-type Props = {
+export interface ICategoryCard {
   value: number
   categories: CategoryItem
 }
-export const CategoryCard: FC<Props> = (props) => {
+export const CategoryCard: FC<ICategoryCard> = (props) => {
   const {
     value,
     categories: { title, icon },
