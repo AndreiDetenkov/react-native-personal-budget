@@ -5,7 +5,7 @@ import { Pressable, ScrollView, Text, View } from 'react-native'
 import { useAppDispatch, useAppSelector } from '../../../app/store'
 import { categoriesSelector, setCategory } from '../model'
 
-export const CategoriesList: FC = () => {
+export const CategoryList: FC = () => {
   const dispatch = useAppDispatch()
   const { categories } = useAppSelector(categoriesSelector)
 

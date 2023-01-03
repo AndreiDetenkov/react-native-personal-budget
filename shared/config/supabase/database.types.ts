@@ -26,7 +26,7 @@ export interface Database {
           created_at: string
           name: string
           value: number
-          category_id?: string
+          category_id: string
         }
         Insert: {
           id?: string

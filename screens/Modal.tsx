@@ -7,25 +7,24 @@ import { Colors } from '../shared/constants/Colors'
 import { Container } from '../shared/styled'
 import { createTransaction } from '../models/transactions'
 import { RootTabScreenProps } from '../app/navigation/types'
-import { useAppDispatch, useAppSelector } from '../app/store'
-import { getTransactionsRequest } from '../entities/transaction/transactionSlice.actions'
-import { CategoriesList, categoryModel } from '../entities/category'
+import { useAppSelector } from '../app/store'
+import { CategoryList, categoryModel } from '../entities/category'
 
 export function ModalScreen({ navigation }: RootTabScreenProps<'Modal'>) {
   const [text, setText] = useState<string>('')
   const [value, setValue] = useState<string>('')
   const [loading, setLoading] = useState<boolean>(false)
 
-  const dispatch = useAppDispatch()
+  // const dispatch = useAppDispatch()
 
   const { categoriesSelector } = categoryModel
   const { categoryId } = useAppSelector(categoriesSelector)
 
   const submitHandler = async () => {
     const payload = {
-      name: text,
-      value: parseFloat(value),
-      category_id: categoryId,
+      name: text || '',
+      value: parseFloat(value) || 0,
+      category_id: categoryId || '',
     }
 
     try {
@@ -35,7 +34,6 @@ export function ModalScreen({ navigation }: RootTabScreenProps<'Modal'>) {
         Alert.alert(JSON.stringify(error?.message))
         return
       }
-      dispatch(getTransactionsRequest())
       navigation.goBack()
     } finally {
       setLoading(false)
@@ -67,7 +65,7 @@ export function ModalScreen({ navigation }: RootTabScreenProps<'Modal'>) {
         </Wrapper>
 
         <ScrollWrapper>
-          <CategoriesList />
+          <CategoryList />
         </ScrollWrapper>
 
         {loading ? (

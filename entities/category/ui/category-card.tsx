@@ -2,20 +2,19 @@ import React, { FC } from 'react'
 import { Image, Text, View } from 'react-native'
 import styled from 'styled-components'
 
-import { TransactionsItem } from '../../../shared/config/supabase/supabase.types'
+import { CategoryItem } from '../api'
 import { Colors } from '../../../shared/constants/Colors'
 import { CardIcon, CardText, CardValue } from '../../../shared/styled'
 
-interface Props {
-  transaction: TransactionsItem
+type Props = {
+  value: number
+  categories: CategoryItem
 }
-
-export const TransactionCard: FC<Props> = ({ transaction }) => {
+export const CategoryCard: FC<Props> = (props) => {
   const {
-    name,
     value,
     categories: { title, icon },
-  } = transaction
+  } = props
 
   return (
     <Card>
@@ -24,8 +23,7 @@ export const TransactionCard: FC<Props> = ({ transaction }) => {
       </CardIcon>
 
       <CardText>
-        <Title>{name}</Title>
-        <Category>{title}</Category>
+        <Title>{title}</Title>
       </CardText>
 
       <CardValue>
@@ -36,23 +34,20 @@ export const TransactionCard: FC<Props> = ({ transaction }) => {
 }
 
 const Card = styled(View)`
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
-  border-bottom-color: lightgrey;
+  border: 1px solid lightgrey;
+  border-radius: 8px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: 8px 16px;
+  padding: 16px;
+  margin-bottom: 16px;
 `
 
 const Title = styled(Text)`
-  font-size: 16px;
+  font-size: 18px;
   color: ${Colors.text};
 `
-const Category = styled(Text)`
-  font-size: 12px;
-  color: grey;
-`
+
 const Value = styled(Text)`
-  font-size: 16px;
+  font-size: 18px;
 `

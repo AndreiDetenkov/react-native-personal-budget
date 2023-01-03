@@ -13,5 +13,5 @@ export interface TransactionsItem extends Transaction {
 export interface CreateTransactionPayload {
   name: string
   value: number
-  category_id: string | undefined
+  category_id: string
 }

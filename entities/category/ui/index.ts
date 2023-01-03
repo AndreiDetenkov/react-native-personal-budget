@@ -1,1 +1,2 @@
-export { CategoriesList } from './categories-list'
+export { CategoryList } from './category-list'
+export { CategoryCard } from './category-card'

@@ -12,7 +12,7 @@ export async function getTransactions() {
 export async function getTransactionsByRange({ from, to }: TransactionByRangePayload) {
   return supabase
     .from('transactions')
-    .select(`id,name,value,created_at, categories(id,title,icon)`)
+    .select(`id,name,value,created_at,category_id, categories(id,title,icon)`)
     .gt('created_at', from)
     .lt('created_at', to)
     .order('created_at', { ascending: false })
