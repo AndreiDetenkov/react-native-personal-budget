@@ -5,10 +5,10 @@ import { ActivityIndicator, Alert, Button, Text, TextInput, View } from 'react-n
 
 import { Colors } from '../shared/constants/Colors'
 import { Container } from '../shared/styled'
-import { createTransaction } from '../entities/transaction/api/transactions'
 import { RootTabScreenProps } from '../app/navigation/types'
 import { useAppSelector } from '../app/store'
 import { CategoryList, categoryModel } from '../entities/category'
+import { createTransaction } from '../entities/transaction'
 
 export function ModalScreen({ navigation }: RootTabScreenProps<'Modal'>) {
   const [text, setText] = useState<string>('')

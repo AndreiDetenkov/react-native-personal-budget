@@ -4,15 +4,15 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 
 import { FullLayout } from '../shared/styled'
 import { Colors } from '../shared/constants/Colors'
-import { useAppDispatch, useAppSelector } from '../app/store'
-import { TransactionList } from '../entities/transaction/ui/transaction-list'
-import { transactionsLoadingSelector } from '../entities/transaction/model/transaction.selectors'
-import { getTransactionsByRangeRequest } from '../entities/transaction/model/transaction.actions'
-import { categoryModel } from '../entities/category'
 import { getCurrentMonthDates } from '../shared/dates'
+import { useAppDispatch, useAppSelector } from '../app/store'
+import { TransactionList, transactionModel } from '../entities/transaction'
+import { categoryModel } from '../entities/category'
 
 export function TransactionsScreen() {
   const { getCategoriesRequest } = categoryModel
+  const { transactionsLoadingSelector, getTransactionsByRangeRequest } = transactionModel
+
   const loading = useAppSelector(transactionsLoadingSelector)
   const dispatch = useAppDispatch()
 
