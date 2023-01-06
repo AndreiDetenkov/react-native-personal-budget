@@ -1,8 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit'
-import {
-  transactionStateReducer,
-  translationStateName,
-} from '../../entities/transaction/transactionSlice'
+import { transactionStateReducer, translationStateName } from '../../entities/transaction/model/transaction'
 import { categoryModel } from '../../entities/category'
 
 export const store = configureStore({

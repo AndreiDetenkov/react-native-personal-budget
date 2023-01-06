@@ -3,9 +3,9 @@ import { useSelector } from 'react-redux'
 import { RefreshControl, ScrollView } from 'react-native'
 
 import { TransactionsItem } from '../../../shared/config/supabase/supabase.types'
-import { TransactionCard } from './TransactionCard'
-import { TransactionTotal } from './TransactionTotal'
-import { transactionsSelector, transactionsSumSelector } from '../transactionSlice.selectors'
+import { TransactionCard } from './transaction-card'
+import { TransactionTotal } from './transaction-total'
+import { transactionsSelector, transactionsSumSelector } from '../model'
 
 interface Props {
   getData: () => void

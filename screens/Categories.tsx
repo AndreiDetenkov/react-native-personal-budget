@@ -4,7 +4,7 @@ import { ScrollView } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
 import { Container } from '../shared/styled'
-import { transactionsByCategory } from '../entities/transaction/transactionSlice.selectors'
+import { transactionsByCategory } from '../entities/transaction/model/transaction.selectors'
 import { CategoryCard, ICategoryCard } from '../entities/category'
 
 export function CategoriesScreen() {

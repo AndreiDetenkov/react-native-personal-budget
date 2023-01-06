@@ -1,7 +1,7 @@
 import { createSelector } from '@reduxjs/toolkit'
 
-import { TransactionSliceMapType } from './transactionSlice'
-import { TransactionsItem } from '../../shared/config/supabase/supabase.types'
+import { TransactionSliceMapType } from './transaction'
+import { TransactionsItem } from '../../../shared/config/supabase/supabase.types'
 
 export const transactionsSelector = createSelector(
   (state: TransactionSliceMapType) => state.transactions.transactions,

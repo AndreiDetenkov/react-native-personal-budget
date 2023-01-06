@@ -1,6 +1,5 @@
-import { supabase } from '../shared/config'
-import { CreateTransactionPayload } from '../shared/config/supabase/supabase.types'
-import { TransactionByRangePayload } from '../entities/transaction/transactionSlice.types'
+import { supabase } from '../../../shared/config'
+import { CreateTransactionPayload, TransactionByRangePayload } from './transactions.types'
 
 export async function getTransactions() {
   return supabase
