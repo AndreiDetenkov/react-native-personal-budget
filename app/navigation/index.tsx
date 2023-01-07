@@ -1,9 +1,9 @@
 import * as React from 'react'
+import { ColorSchemeName, Pressable } from 'react-native'
 import { FontAwesome, Ionicons } from '@expo/vector-icons'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { DarkTheme, DefaultTheme, NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import { ColorSchemeName, Pressable } from 'react-native'
 
 import { CategoriesScreen, ModalScreen, NotFoundScreen, TransactionsScreen } from '../../screens'
 import { RootStackParamList, RootTabParamList, RootTabScreenProps } from './types'

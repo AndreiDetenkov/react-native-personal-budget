@@ -36,9 +36,9 @@ export const TransactionCard: FC<Props> = ({ transaction }) => {
 }
 
 const Card = styled(View)`
-  border-bottom-width: 1px;
+  border-bottom-width: 0.8px;
   border-bottom-style: solid;
-  border-bottom-color: lightgrey;
+  border-bottom-color: lightsteelblue;
   display: flex;
   flex-direction: row;
   justify-content: space-between;

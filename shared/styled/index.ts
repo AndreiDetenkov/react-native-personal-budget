@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { View } from 'react-native'
+import { Text, View } from 'react-native'
 
 export const FullLayout = styled(View)`
   display: flex;
@@ -20,6 +20,7 @@ export const CardIcon = styled(View)`
 
 export const CardText = styled(View)`
   display: flex;
+  justify-content: center;
   flex: 1;
 `
 
@@ -27,4 +28,10 @@ export const CardValue = styled(View)`
   display: flex;
   align-items: flex-end;
   flex: 0.3;
+`
+
+export const MainTitle = styled(Text)`
+  font-size: 20px;
+  font-weight: 600;
+  padding: 0 16px 8px;
 `

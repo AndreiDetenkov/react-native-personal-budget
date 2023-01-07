@@ -21,11 +21,13 @@ export const TransactionTotal: FC<Props> = ({ total }) => {
 }
 
 const Card = styled(View)`
-  padding: 0 16px;
+  padding: 8px;
+  margin: 16px 16px 24px;
+  border: 1px solid lightsteelblue;
+  border-radius: 16px;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 24px;
 `
 const Title = styled(Text)`
   text-transform: uppercase;

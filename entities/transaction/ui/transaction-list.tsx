@@ -3,9 +3,10 @@ import { useSelector } from 'react-redux'
 import { RefreshControl, ScrollView } from 'react-native'
 
 import { TransactionCard } from './transaction-card'
-import { TransactionTotal } from './transaction-total'
 import { transactionsSelector, transactionsSumSelector } from '../model'
 import { TransactionsItem } from '../api'
+import { MainTitle } from '../../../shared/styled'
+import { TransactionTotal } from './transaction-total'
 
 interface Props {
   getData: () => void
@@ -13,8 +14,8 @@ interface Props {
 export const TransactionList: FC<Props> = ({ getData }) => {
   const [refreshing] = useState(false)
 
-  const transactions = useSelector(transactionsSelector)
   const sum = useSelector(transactionsSumSelector)
+  const transactions = useSelector(transactionsSelector)
 
   const refreshHandler = () => getData()
 
@@ -24,6 +25,7 @@ export const TransactionList: FC<Props> = ({ getData }) => {
       refreshControl={<RefreshControl refreshing={refreshing} onRefresh={refreshHandler} />}
     >
       <TransactionTotal total={sum} />
+      <MainTitle>Recent transactions</MainTitle>
       {transactions.map((transaction: TransactionsItem) => (
         <TransactionCard transaction={transaction} key={transaction.id} />
       ))}
