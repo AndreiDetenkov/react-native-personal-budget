@@ -4,13 +4,13 @@
  *
  */
 import * as React from 'react'
-import { FontAwesome } from '@expo/vector-icons'
+import { FontAwesome, Ionicons } from '@expo/vector-icons'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { DarkTheme, DefaultTheme, NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { ColorSchemeName, Pressable } from 'react-native'
 
-import { TransactionsScreen, CategoriesScreen, ModalScreen, NotFoundScreen } from '../../screens'
+import { CategoriesScreen, ModalScreen, NotFoundScreen, TransactionsScreen } from '../../screens'
 import { RootStackParamList, RootTabParamList, RootTabScreenProps } from './types'
 import LinkingConfiguration from './LinkingConfiguration'
 import { Colors } from '../../shared/constants/Colors'
@@ -64,7 +64,7 @@ function BottomTabNavigator() {
         component={TransactionsScreen}
         options={({ navigation }: RootTabScreenProps<'Transactions'>) => ({
           title: 'Transactions',
-          tabBarIcon: ({ color }) => <TabBarIcon name="home" color={color} />,
+          tabBarIcon: ({ color }) => <TabBarIcon name="md-list" color={color} />,
           headerRight: () => (
             <Pressable
               onPress={() => navigation.navigate('Modal')}
@@ -82,7 +82,7 @@ function BottomTabNavigator() {
         component={CategoriesScreen}
         options={{
           title: 'Categories',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          tabBarIcon: ({ color }) => <TabBarIcon name="pie-chart" color={color} />,
         }}
       />
     </BottomTab.Navigator>
@@ -92,9 +92,6 @@ function BottomTabNavigator() {
 /**
  * You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
  */
-function TabBarIcon(props: {
-  name: React.ComponentProps<typeof FontAwesome>['name']
-  color: string
-}) {
-  return <FontAwesome size={28} style={{ marginBottom: -8 }} {...props} />
+function TabBarIcon(props: { name: React.ComponentProps<typeof Ionicons>['name']; color: string }) {
+  return <Ionicons size={28} style={{ marginBottom: -8 }} {...props} />
 }
