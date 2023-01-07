@@ -31,9 +31,9 @@ export interface Database {
         Insert: {
           id?: string
           created_at?: string
-          name?: string
+          name: string
           value: number
-          category_id?: string
+          category_id: string
         }
         Update: {
           id?: string

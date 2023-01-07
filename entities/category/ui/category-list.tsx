@@ -3,11 +3,12 @@ import styled from 'styled-components'
 
 import { Pressable, ScrollView, Text, View } from 'react-native'
 import { useAppDispatch, useAppSelector } from '../../../app/store'
-import { categoriesSelector, setCategory } from '../model'
+import { categoryListSelector, setCategory } from '../model'
+import { Colors } from '../../../shared/constants/Colors'
 
 export const CategoryList: FC = () => {
   const dispatch = useAppDispatch()
-  const { categories } = useAppSelector(categoriesSelector)
+  const categories = useAppSelector(categoryListSelector)
 
   const pressHandler = (categoryId: string): void => {
     dispatch(setCategory(categoryId))
@@ -18,7 +19,7 @@ export const CategoryList: FC = () => {
       {categories &&
         categories.map(({ id, title, isPressed }) => (
           <Pressable onPress={() => pressHandler(id)} key={id}>
-            <Chip style={{ backgroundColor: isPressed ? '#bb86fc' : '#eee' }}>
+            <Chip style={{ backgroundColor: isPressed ? '#bb86fc' : '#f1f1f1' }}>
               <ChipLabel style={{ color: isPressed ? '#fff' : '#000021' }}>{title}</ChipLabel>
             </Chip>
           </Pressable>
@@ -28,16 +29,16 @@ export const CategoryList: FC = () => {
 }
 
 const Chip = styled(View)`
-  height: 32px;
-  padding: 0 16px;
+  padding: 16px 24px;
   text-align: center;
   margin-right: 16px;
-  border-radius: 100px;
+  border-radius: 16px;
+  border: 1px solid ${Colors.secondary};
   display: flex;
   align-items: center;
   justify-content: center;
 `
 
 const ChipLabel = styled(Text)`
-  font-size: 13px;
+  font-size: 16px;
 `

@@ -18,5 +18,5 @@ export interface TransactionByRangePayload {
 export interface CreateTransactionPayload {
   name: string
   value: number
-  category_id: string
+  category_id: string | undefined
 }

@@ -8,32 +8,31 @@ import { Container } from '../shared/styled'
 import { RootTabScreenProps } from '../app/navigation/types'
 import { useAppSelector } from '../app/store'
 import { CategoryList, categoryModel } from '../entities/category'
-import { createTransaction } from '../entities/transaction'
+import { createTransaction, CreateTransactionPayload } from '../entities/transaction'
+import { categoryIdSelector } from '../entities/category/model'
 
 export function ModalScreen({ navigation }: RootTabScreenProps<'Modal'>) {
   const [text, setText] = useState<string>('')
   const [value, setValue] = useState<string>('')
   const [loading, setLoading] = useState<boolean>(false)
 
-  // const dispatch = useAppDispatch()
+  const { categoryIdSelector } = categoryModel
+  const categoryId = useAppSelector(categoryIdSelector)
 
-  const { categoriesSelector } = categoryModel
-  const { categoryId } = useAppSelector(categoriesSelector)
+  const submitHandler = async (): Promise<void> => {
+    if (!text || !value || !categoryId) {
+      return Alert.alert('Please, type name and value of transaction and choose category')
+    }
 
-  const submitHandler = async () => {
-    const payload = {
-      name: text || '',
-      value: parseFloat(value) || 0,
-      category_id: categoryId || '',
+    const payload: CreateTransactionPayload = {
+      name: text,
+      value: Number(value),
+      category_id: categoryId,
     }
 
     try {
       setLoading(true)
-      const { error } = await createTransaction(payload)
-      if (error) {
-        Alert.alert(JSON.stringify(error?.message))
-        return
-      }
+      await createTransaction(payload)
       navigation.goBack()
     } finally {
       setLoading(false)
@@ -46,6 +45,7 @@ export function ModalScreen({ navigation }: RootTabScreenProps<'Modal'>) {
         <Wrapper>
           <Text>Transaction</Text>
           <Input
+            autoFocus={true}
             autoCapitalize="sentences"
             placeholder="Type description"
             value={text}

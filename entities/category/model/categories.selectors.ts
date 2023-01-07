@@ -12,18 +12,8 @@ export const categoryListSelector = createSelector(
 export const categoryIdSelector = createSelector(
   (state: CategoryStateMapType) => state.categories.categories,
   (categories) => {
-    const category = categories.find((category) => category.isPressed)
-    return category?.id
+    return categories.find((category) => category.isPressed)?.id
   }
-)
-
-export const categoriesSelector = createSelector(
-  categoryListSelector,
-  categoryIdSelector,
-  (categories, categoryId) => ({
-    categories,
-    categoryId,
-  })
 )
 
 const categoriesWithValues = createSelector(
@@ -45,7 +35,6 @@ export const categoriesWithValue = createSelector(
         category.value += value
       }
     })
-
     return categories
   }
 )
