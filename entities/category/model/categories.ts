@@ -1,11 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-import { CategoriesResponseSuccess, CategoryItem } from '../api'
+import { CategoriesResponseSuccess } from '../api'
 import { getCategoriesRequest } from './categories.actions'
-
-type CategoryState = {
-  categories: CategoryItem[]
-}
+import { CategoryState } from './categories.types'
 
 const initialState: CategoryState = {
   categories: [],

@@ -7,7 +7,7 @@ export interface Database {
         Row: {
           title: string
           id: string
-          icon?: string
+          icon: string
         }
         Insert: {
           title: string
