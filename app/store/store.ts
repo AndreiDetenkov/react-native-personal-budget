@@ -1,10 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit'
-import { transactionStateReducer, translationStateName } from '../../entities/transaction/model/transaction'
+import { transactionModel } from '../../entities/transaction'
 import { categoryModel } from '../../entities/category'
 
 export const store = configureStore({
   reducer: {
-    [translationStateName]: transactionStateReducer,
+    [transactionModel.transactionStateName]: transactionModel.transactionStateReducer,
     [categoryModel.categoryStateName]: categoryModel.categoryStateReducer,
   },
 })

@@ -2,9 +2,9 @@ import React, { FC } from 'react'
 import { Image, Text, View } from 'react-native'
 import styled from 'styled-components'
 
-import { TransactionsItem } from '../../../shared/config/supabase/supabase.types'
 import { Colors } from '../../../shared/constants/Colors'
 import { CardIcon, CardText, CardValue } from '../../../shared/styled'
+import { TransactionsItem } from '../api'
 
 interface Props {
   transaction: TransactionsItem

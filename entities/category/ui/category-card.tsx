@@ -39,10 +39,10 @@ const Card = styled(View)`
 `
 
 const Title = styled(Text)`
-  font-size: 18px;
+  font-size: 16px;
   color: ${Colors.text};
 `
 
 const Value = styled(Text)`
-  font-size: 18px;
+  font-size: 16px;
 `
