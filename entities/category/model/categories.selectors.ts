@@ -2,8 +2,7 @@ import { createSelector } from '@reduxjs/toolkit'
 
 import { CategoryStateMapType } from './categories'
 import { ICategoriesWithValue } from './categories.types'
-import { transactionModel } from '../../transaction'
-import { TransactionsItem } from '../../../shared/config/supabase/supabase.types'
+import { transactionModel, TransactionsItem } from '../../transaction'
 
 export const categoryListSelector = createSelector(
   (state: CategoryStateMapType) => state.categories.categories,

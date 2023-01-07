@@ -2,10 +2,10 @@ import React, { FC, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { RefreshControl, ScrollView } from 'react-native'
 
-import { TransactionsItem } from '../../../shared/config/supabase/supabase.types'
 import { TransactionCard } from './transaction-card'
 import { TransactionTotal } from './transaction-total'
 import { transactionsSelector, transactionsSumSelector } from '../model'
+import { TransactionsItem } from '../api'
 
 interface Props {
   getData: () => void
