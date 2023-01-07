@@ -27,11 +27,12 @@ export const CardText = styled(View)`
 export const CardValue = styled(View)`
   display: flex;
   align-items: flex-end;
+  justify-content: center;
   flex: 0.3;
 `
 
 export const MainTitle = styled(Text)`
   font-size: 20px;
   font-weight: 600;
-  padding: 0 16px 8px;
+  padding: 0 0 16px;
 `

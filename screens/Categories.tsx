@@ -2,7 +2,7 @@ import React, { useMemo } from 'react'
 import { useSelector } from 'react-redux'
 import { ScrollView } from 'react-native'
 
-import { Container } from '../shared/styled'
+import { Container, MainTitle } from '../shared/styled'
 import { CategoryCard, categoryModel } from '../entities/category'
 import { ICategoriesWithValue } from '../entities/category/model'
 import { SafeAreaView } from 'react-native-safe-area-context'
@@ -21,6 +21,7 @@ export function CategoriesScreen() {
     <Container>
       <SafeAreaView>
         <ScrollView showsVerticalScrollIndicator={false}>
+          <MainTitle>All Categories</MainTitle>
           {sortedList.map((category: ICategoriesWithValue) => (
             <CategoryCard item={category} key={category.id} />
           ))}

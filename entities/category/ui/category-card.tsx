@@ -30,12 +30,13 @@ export const CategoryCard: FC<Props> = ({ item }) => {
 }
 
 const Card = styled(View)`
+  border: 1px solid ${Colors.secondary};
   border-radius: 16px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: 8px 0;
-  margin-bottom: 8px;
+  padding: 8px 16px;
+  margin-bottom: 16px;
 `
 
 const Title = styled(Text)`
@@ -45,4 +46,5 @@ const Title = styled(Text)`
 
 const Value = styled(Text)`
   font-size: 16px;
+  font-weight: 500;
 `

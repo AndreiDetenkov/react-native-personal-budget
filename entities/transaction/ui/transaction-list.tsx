@@ -5,7 +5,7 @@ import { RefreshControl, ScrollView } from 'react-native'
 import { TransactionCard } from './transaction-card'
 import { transactionsSelector, transactionsSumSelector } from '../model'
 import { TransactionsItem } from '../api'
-import { MainTitle } from '../../../shared/styled'
+import { Container, MainTitle } from '../../../shared/styled'
 import { TransactionTotal } from './transaction-total'
 
 interface Props {
@@ -25,7 +25,9 @@ export const TransactionList: FC<Props> = ({ getData }) => {
       refreshControl={<RefreshControl refreshing={refreshing} onRefresh={refreshHandler} />}
     >
       <TransactionTotal total={sum} />
-      <MainTitle>Recent transactions</MainTitle>
+      <Container>
+        <MainTitle>Recent Transactions</MainTitle>
+      </Container>
       {transactions.map((transaction: TransactionsItem) => (
         <TransactionCard transaction={transaction} key={transaction.id} />
       ))}
