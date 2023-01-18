@@ -31,9 +31,7 @@ export const categoriesWithValue = createSelector(
   (categories: ICategoriesWithValue[], transactions: TransactionsItem[]) => {
     transactions.forEach(({ category_id, value }) => {
       const category = categories && categories.find(({ id }) => id === category_id)
-      if (category !== undefined) {
-        category.value += value
-      }
+      if (category) category.value += value
     })
     return categories
   }
