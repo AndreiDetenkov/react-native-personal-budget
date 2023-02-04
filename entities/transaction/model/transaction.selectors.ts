@@ -4,7 +4,7 @@ import { TransactionSliceMapType } from './transaction'
 
 export const transactionsSelector = createSelector(
   (state: TransactionSliceMapType) => state.transactions.transactions,
-  (transactions) => transactions.slice(0, 20)
+  (transactions) => transactions.slice(0, 15)
 )
 
 export const allTransactionsSelector = createSelector(

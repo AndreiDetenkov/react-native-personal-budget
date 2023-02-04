@@ -22,7 +22,7 @@ export const TransactionTotal: FC<Props> = ({ total }) => {
 
 const Card = styled(View)`
   padding: 8px;
-  margin: 16px 16px 24px;
+  margin: 16px 16px 32px;
   border: 1px solid ${Colors.secondary};
   border-radius: 16px;
   display: flex;
