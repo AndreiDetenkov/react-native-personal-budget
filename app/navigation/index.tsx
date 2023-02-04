@@ -5,7 +5,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { DarkTheme, DefaultTheme, NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
-import { CategoriesScreen, ModalScreen, NotFoundScreen, TransactionsScreen } from '../../screens'
+import { AllTransactions, CategoriesScreen, ModalScreen, NotFoundScreen, TransactionsScreen } from '../../screens'
 import { RootStackParamList, RootTabParamList, RootTabScreenProps } from './types'
 import LinkingConfiguration from './LinkingConfiguration'
 import { Colors } from '../../shared/constants/Colors'
@@ -30,6 +30,11 @@ function RootNavigator() {
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
       <Stack.Group screenOptions={{ presentation: 'modal' }}>
         <Stack.Screen name="Modal" component={ModalScreen} options={{ title: 'Add transaction' }} />
+        <Stack.Screen
+          name="AllTransactions"
+          component={AllTransactions}
+          options={{ title: 'All transactions' }}
+        />
       </Stack.Group>
     </Stack.Navigator>
   )

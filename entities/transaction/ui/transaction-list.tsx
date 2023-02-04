@@ -1,14 +1,14 @@
 import React, { FC, useState } from 'react'
-import { useSelector } from 'react-redux'
 import { RefreshControl, ScrollView, View } from 'react-native'
 import { Link } from '@react-navigation/native'
 import styled from 'styled-components'
 
-import { TransactionCard } from './transaction-card'
+import { TransactionCard, TransactionTotal } from '../ui'
 import { transactionsSelector, transactionsSumSelector } from '../model'
 import { TransactionsItem } from '../api'
 import { Container, MainTitle } from '../../../shared/styled'
-import { TransactionTotal } from './transaction-total'
+import { Colors } from '../../../shared/constants/Colors'
+import { useAppSelector } from '../../../app/store'
 
 interface Props {
   getData: () => void
@@ -16,8 +16,8 @@ interface Props {
 export const TransactionList: FC<Props> = ({ getData }) => {
   const [refreshing] = useState(false)
 
-  const sum = useSelector(transactionsSumSelector)
-  const transactions = useSelector(transactionsSelector)
+  const sum = useAppSelector(transactionsSumSelector)
+  const transactions = useAppSelector(transactionsSelector)
 
   const refreshHandler = () => getData()
 
@@ -30,7 +30,7 @@ export const TransactionList: FC<Props> = ({ getData }) => {
       <Container>
         <Wrapper>
           <MainTitle>Recent Transactions</MainTitle>
-          <Link to="">See All&nbsp;&#10095;</Link>
+          <Link to={{ screen: 'AllTransactions' }}>See All&nbsp;&#10095;</Link>
         </Wrapper>
       </Container>
       {transactions.map((transaction: TransactionsItem) => (
@@ -46,5 +46,7 @@ const Wrapper = styled(View)`
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
-  border: 1px solid coral;
+  color: ${Colors.text};
+  padding: 0 4px 10px;
+  cursor: pointer;
 `

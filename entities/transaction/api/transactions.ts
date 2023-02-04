@@ -15,7 +15,6 @@ export async function getTransactionsByRange({ from, to }: TransactionByRangePay
     .gt('created_at', from)
     .lt('created_at', to)
     .order('created_at', { ascending: false })
-    .limit(20)
 }
 
 export async function createTransaction(payload: CreateTransactionPayload) {
