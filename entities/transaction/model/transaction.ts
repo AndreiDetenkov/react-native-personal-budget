@@ -30,6 +30,9 @@ export const transactionSlice = createSlice({
           state.transactions = action.payload
         }
       )
+      .addCase(getTransactionsByRangeRequest.rejected, (state) => {
+        state.isLoading = false
+      })
   },
 })
 

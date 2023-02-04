@@ -34,5 +34,5 @@ export const CardValue = styled(View)`
 export const MainTitle = styled(Text)`
   font-size: 20px;
   font-weight: 600;
-  padding: 0 0 16px;
+  padding: 0;
 `

@@ -5,11 +5,9 @@ import { FullLayout } from '../shared/styled'
 import { getCurrentMonthDates } from '../shared/dates'
 import { useAppDispatch, useAppSelector } from '../app/store'
 import { TransactionList, transactionModel } from '../entities/transaction'
-import { categoryModel } from '../entities/category'
 import { Colors } from '../shared/constants/Colors'
 
 export function TransactionsScreen() {
-  const { getCategoriesRequest } = categoryModel
   const { transactionsLoadingSelector, getTransactionsByRangeRequest } = transactionModel
 
   const loading = useAppSelector(transactionsLoadingSelector)
@@ -22,7 +20,6 @@ export function TransactionsScreen() {
 
   useEffect(() => {
     getTransactionsList()
-    dispatch(getCategoriesRequest())
   }, [])
 
   return (

@@ -1,6 +1,8 @@
 import React, { FC, useState } from 'react'
 import { useSelector } from 'react-redux'
-import { RefreshControl, ScrollView } from 'react-native'
+import { RefreshControl, ScrollView, View } from 'react-native'
+import { Link } from '@react-navigation/native'
+import styled from 'styled-components'
 
 import { TransactionCard } from './transaction-card'
 import { transactionsSelector, transactionsSumSelector } from '../model'
@@ -26,7 +28,10 @@ export const TransactionList: FC<Props> = ({ getData }) => {
     >
       <TransactionTotal total={sum} />
       <Container>
-        <MainTitle>Recent Transactions</MainTitle>
+        <Wrapper>
+          <MainTitle>Recent Transactions</MainTitle>
+          <Link to="">See All&nbsp;&#10095;</Link>
+        </Wrapper>
       </Container>
       {transactions.map((transaction: TransactionsItem) => (
         <TransactionCard transaction={transaction} key={transaction.id} />
@@ -34,3 +39,12 @@ export const TransactionList: FC<Props> = ({ getData }) => {
     </ScrollView>
   )
 }
+
+const Wrapper = styled(View)`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  border: 1px solid coral;
+`
