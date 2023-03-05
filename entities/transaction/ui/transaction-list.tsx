@@ -47,4 +47,5 @@ const Wrapper = styled(View)`
   align-items: center;
   color: ${Colors.text};
   cursor: pointer;
+  margin-bottom: 20px;
 `
