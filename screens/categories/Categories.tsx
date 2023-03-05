@@ -2,11 +2,11 @@ import React, { useEffect, useMemo } from 'react'
 import { useSelector } from 'react-redux'
 import { ScrollView } from 'react-native'
 
-import { Container, MainTitle } from '../shared/styled'
-import { CategoryCard, categoryModel } from '../entities/category'
-import { ICategoriesWithValue } from '../entities/category/model'
+import { Container, MainTitle } from '../../shared/styled'
+import { CategoryCard, categoryModel } from '../../entities/category'
+import { ICategoriesWithValue } from '../../entities/category/model'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import { useAppDispatch } from '../app/store'
+import { useAppDispatch } from '../../app/store'
 
 export function CategoriesScreen() {
   const { categoriesWithValue, getCategoriesRequest } = categoryModel
