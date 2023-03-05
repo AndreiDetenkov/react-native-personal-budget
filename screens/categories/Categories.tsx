@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 import { ScrollView } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
-import { Container, MainTitle } from '../../shared/styled'
+import { Container, MainTitle } from '../../shared'
 import { CategoryCard, categoryModel } from '../../entities/category'
 import { useAppDispatch } from '../../app/store'
 

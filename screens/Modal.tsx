@@ -3,21 +3,19 @@ import styled from 'styled-components'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { ActivityIndicator, Alert, Button, Text, TextInput, View } from 'react-native'
 
-import { Colors } from '../shared/constants/Colors'
-import { Container } from '../shared/styled'
 import { RootTabScreenProps } from '../app/navigation/types'
 import { useAppSelector } from '../app/store'
 import { CategoryList, categoryModel } from '../entities/category'
 import { createTransaction, CreateTransactionPayload } from '../entities/transaction'
-import { categoryIdSelector } from '../entities/category/model'
+import { Container } from '../shared/styled'
+import { Colors } from '../shared/constants/Colors'
 
 export function ModalScreen({ navigation }: RootTabScreenProps<'Modal'>) {
   const [text, setText] = useState<string>('')
   const [value, setValue] = useState<string>('')
   const [loading, setLoading] = useState<boolean>(false)
 
-  const { categoryIdSelector } = categoryModel
-  const categoryId = useAppSelector(categoryIdSelector)
+  const categoryId = useAppSelector(categoryModel.categoryIdSelector)
 
   const submitHandler = async (): Promise<void> => {
     if (!text || !value || !categoryId) {

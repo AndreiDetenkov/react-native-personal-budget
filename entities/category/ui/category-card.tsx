@@ -2,8 +2,7 @@ import React, { FC } from 'react'
 import { Image, Text, View } from 'react-native'
 import styled from 'styled-components'
 
-import { Colors } from '../../../shared/constants/Colors'
-import { CardIcon, CardText, CardValue } from '../../../shared/styled'
+import { CardIcon, CardText, CardValue, Colors } from '../../../shared'
 import { ICategoriesWithValue } from '../model'
 
 interface Props {

@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import { Pressable, ScrollView, Text, View } from 'react-native'
 import { useAppDispatch, useAppSelector } from '../../../app/store'
 import { categoryListSelector, setCategory } from '../model'
-import { Colors } from '../../../shared/constants/Colors'
+import { Colors } from '../../../shared'
 
 export const CategoryList: FC = (): JSX.Element => {
   const dispatch = useAppDispatch()

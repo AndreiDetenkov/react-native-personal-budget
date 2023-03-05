@@ -8,7 +8,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { AllTransactions, CategoriesScreen, ModalScreen, NotFoundScreen, TransactionsScreen } from '../../screens'
 import { RootStackParamList, RootTabParamList, RootTabScreenProps } from './types'
 import LinkingConfiguration from './LinkingConfiguration'
-import { Colors } from '../../shared/constants/Colors'
+import { Colors } from '../../shared'
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   return (

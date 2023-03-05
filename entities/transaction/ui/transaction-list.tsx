@@ -6,8 +6,7 @@ import styled from 'styled-components'
 import { TransactionCard, TransactionTotal } from '../ui'
 import { transactionsSelector, transactionsSumSelector } from '../model'
 import { TransactionsItem } from '../api'
-import { Container, MainTitle } from '../../../shared/styled'
-import { Colors } from '../../../shared/constants/Colors'
+import { Colors, Container, MainTitle } from '../../../shared'
 import { useAppSelector } from '../../../app/store'
 
 interface Props {

@@ -2,8 +2,7 @@ import { Text, View } from 'react-native'
 import React, { FC } from 'react'
 import styled from 'styled-components'
 
-import { Colors } from '../../../shared/constants/Colors'
-import { formattedDate } from '../../../shared/dates'
+import { Colors, formattedDate } from '../../../shared'
 
 interface Props {
   total: number
