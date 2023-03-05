@@ -9,7 +9,7 @@ interface Props {
   total: number
 }
 
-export const TransactionTotal: FC<Props> = ({ total }) => {
+export const TransactionTotal: FC<Props> = ({ total }): JSX.Element => {
   const currentDate = formattedDate('MMMM YYYY')
   return (
     <Card>

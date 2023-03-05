@@ -1,11 +1,11 @@
 import React, { useCallback, useEffect } from 'react'
 import { ActivityIndicator } from 'react-native'
 
-import { FullLayout } from '../../shared/styled'
 import { getCurrentMonthDates } from '../../shared/dates'
 import { useAppDispatch, useAppSelector } from '../../app/store'
 import { TransactionList, transactionModel } from '../../entities/transaction'
 import { Colors } from '../../shared/constants/Colors'
+import { FullLayout } from '../../shared/styled'
 
 export function TransactionsScreen() {
   const { transactionsLoadingSelector, getTransactionsByRangeRequest } = transactionModel

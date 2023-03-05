@@ -6,7 +6,7 @@ import { useAppDispatch, useAppSelector } from '../../../app/store'
 import { categoryListSelector, setCategory } from '../model'
 import { Colors } from '../../../shared/constants/Colors'
 
-export const CategoryList: FC = () => {
+export const CategoryList: FC = (): JSX.Element => {
   const dispatch = useAppDispatch()
   const categories = useAppSelector(categoryListSelector)
 

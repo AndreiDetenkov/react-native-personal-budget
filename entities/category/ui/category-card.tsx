@@ -9,7 +9,7 @@ import { ICategoriesWithValue } from '../model'
 interface Props {
   item: ICategoriesWithValue
 }
-export const CategoryCard: FC<Props> = ({ item }) => {
+export const CategoryCard: FC<Props> = ({ item }): JSX.Element => {
   const { icon, title, value } = item
 
   return (

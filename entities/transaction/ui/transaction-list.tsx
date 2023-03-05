@@ -13,7 +13,7 @@ import { useAppSelector } from '../../../app/store'
 interface Props {
   getData: () => void
 }
-export const TransactionList: FC<Props> = ({ getData }) => {
+export const TransactionList: FC<Props> = ({ getData }): JSX.Element => {
   const [refreshing] = useState(false)
 
   const sum = useAppSelector(transactionsSumSelector)
@@ -45,7 +45,6 @@ const Wrapper = styled(View)`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
   color: ${Colors.text};
   cursor: pointer;
 `

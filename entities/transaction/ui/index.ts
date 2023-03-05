@@ -1,3 +1,3 @@
-export { TransactionCard } from './transaction-card'
-export { TransactionList } from './transaction-list'
-export { TransactionTotal } from './transaction-total'
+export * from './transaction-card'
+export * from './transaction-list'
+export * from './transaction-total'
