@@ -22,4 +22,6 @@ export const Colors = {
   primary: '#6200ee',
   secondary: '#BB86FC',
   text: '#333',
+  border: '#d2d2d2',
+  white: '#fff',
 }

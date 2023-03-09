@@ -4,7 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 
 import { useAppSelector } from '../../app/store'
 import { TransactionCard, transactionModel, TransactionsItem } from '../../entities/transaction'
-import { FullLayout } from '../../shared/styled'
+import { FullLayout } from '../../shared'
 
 export const AllTransactions = () => {
   const list = useAppSelector(transactionModel.allTransactionsSelector)

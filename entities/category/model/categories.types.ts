@@ -1,12 +1,13 @@
-import { CategoryItem } from '../api'
+import { Categories } from '../api'
 
 export type CategoryState = {
-  categories: CategoryItem[]
+  categories: Categories[]
 }
 
-export interface ICategoriesWithValue {
-  id: string
-  title: string
+export interface ICategoriesWithValue extends Categories {
   value: number
-  icon: string
+}
+
+export interface ICategoriesWithPressed extends Categories {
+  isPressed: boolean
 }

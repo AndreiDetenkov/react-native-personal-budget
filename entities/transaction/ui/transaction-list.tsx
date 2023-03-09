@@ -3,7 +3,7 @@ import { RefreshControl, ScrollView, View } from 'react-native'
 import { Link } from '@react-navigation/native'
 import styled from 'styled-components'
 
-import { TransactionCard, TransactionTotal } from '../ui'
+import { TransactionCard, TransactionTotal } from '../index'
 import { transactionsSelector, transactionsSumSelector } from '../model'
 import { TransactionsItem } from '../api'
 import { Colors, Container, MainTitle } from '../../../shared'

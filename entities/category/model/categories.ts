@@ -11,21 +11,13 @@ const initialState: CategoryState = {
 export const categories = createSlice({
   name: 'categories',
   initialState,
-  reducers: {
-    setCategory: (state: CategoryState, action: PayloadAction<string>) => {
-      state.categories.forEach((item) => {
-        item.isPressed = item.id === action.payload
-      })
-    },
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder.addCase(
       getCategoriesRequest.fulfilled,
       (state, action: PayloadAction<CategoriesResponseSuccess>) => {
         // @ts-ignore
-        state.categories = action.payload.map((item) => {
-          return { ...item, isPressed: false }
-        })
+        state.categories = action.payload
       }
     )
   },
@@ -38,5 +30,5 @@ export type CategoryStateMapType = {
 export const {
   reducer: categoryStateReducer,
   name: categoryStateName,
-  actions: { setCategory },
+  actions: {},
 } = { ...categories }

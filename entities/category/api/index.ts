@@ -1,2 +1,2 @@
-export { getCategories } from './categories'
-export { CategoriesResponseSuccess, CategoryItem } from './categories.types'
+export * from './categories'
+export * from './categories.types'

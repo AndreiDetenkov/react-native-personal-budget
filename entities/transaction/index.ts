@@ -1,3 +1,5 @@
-export * from './ui'
+export * from './ui/transaction-card'
+export * from './ui/transaction-list'
+export * from './ui/transaction-total'
 export * as transactionModel from './model'
 export * from './api'
