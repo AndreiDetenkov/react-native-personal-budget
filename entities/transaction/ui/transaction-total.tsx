@@ -2,14 +2,14 @@ import { Text, View } from 'react-native'
 import React, { FC } from 'react'
 import styled from 'styled-components'
 
-import { Colors, formattedDate } from '../../../shared'
+import { Colors, formatDateByTemplate } from '../../../shared'
 
 interface Props {
   total: number
 }
 
 export const TransactionTotal: FC<Props> = ({ total }): JSX.Element => {
-  const currentDate = formattedDate('MMMM YYYY')
+  const currentDate = formatDateByTemplate('MMMM YYYY')
   return (
     <Card>
       <Title>Expense</Title>

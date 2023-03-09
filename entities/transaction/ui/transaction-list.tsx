@@ -13,11 +13,10 @@ interface Props {
   getData: () => void
 }
 export const TransactionList: FC<Props> = ({ getData }): JSX.Element => {
-  const [refreshing] = useState(false)
-
   const sum = useAppSelector(transactionsSumSelector)
   const transactions = useAppSelector(transactionsSelector)
 
+  const [refreshing] = useState(false)
   const refreshHandler = () => getData()
 
   return (
@@ -26,12 +25,14 @@ export const TransactionList: FC<Props> = ({ getData }): JSX.Element => {
       refreshControl={<RefreshControl refreshing={refreshing} onRefresh={refreshHandler} />}
     >
       <TransactionTotal total={sum} />
+
       <Container>
         <Wrapper>
           <MainTitle>Recent Transactions</MainTitle>
           <Link to={{ screen: 'AllTransactions' }}>See All&nbsp;&#10095;</Link>
         </Wrapper>
       </Container>
+
       {transactions.map((transaction: TransactionsItem) => (
         <TransactionCard transaction={transaction} key={transaction.id} />
       ))}

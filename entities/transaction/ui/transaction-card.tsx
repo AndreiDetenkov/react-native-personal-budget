@@ -2,19 +2,22 @@ import React, { FC } from 'react'
 import { Image, Text, View } from 'react-native'
 import styled from 'styled-components'
 
-import { CardIcon, CardText, CardValue, Colors } from '../../../shared'
+import { CardIcon, CardText, CardValue, Colors, formatDate } from '../../../shared'
 import { TransactionsItem } from '../api'
 
-interface Props {
+interface TransactionCardProps {
   transaction: TransactionsItem
 }
 
-export const TransactionCard: FC<Props> = ({ transaction }): JSX.Element => {
-  const {
+export const TransactionCard: FC<TransactionCardProps> = ({
+  transaction: {
     name,
     value,
     categories: { title, icon },
-  } = transaction
+    created_at,
+  },
+}): JSX.Element => {
+  const createdDate = formatDate(created_at)
 
   return (
     <Card>
@@ -27,9 +30,10 @@ export const TransactionCard: FC<Props> = ({ transaction }): JSX.Element => {
         <Category>{title}</Category>
       </CardText>
 
-      <CardValue>
+      <Amount>
         <Value>{value}c</Value>
-      </CardValue>
+        <Date>{createdDate}</Date>
+      </Amount>
     </Card>
   )
 }
@@ -51,4 +55,13 @@ const Category = styled(Text)`
 `
 const Value = styled(Text)`
   font-size: 16px;
+`
+
+const Date = styled(Text)`
+  font-size: 10px;
+  color: grey;
+`
+
+const Amount = styled(CardValue)`
+  padding-bottom: 2px;
 `
