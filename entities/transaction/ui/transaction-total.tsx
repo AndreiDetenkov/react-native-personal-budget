@@ -10,10 +10,12 @@ interface Props {
 
 export const TransactionTotal: FC<Props> = ({ total }): JSX.Element => {
   const currentDate = formatDateByTemplate('MMMM YYYY')
+  const formattedTotal = total.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, `$1 `)
+
   return (
     <Card>
       <Title>Expense</Title>
-      <Total>{total}&nbsp;сом</Total>
+      <Total>{formattedTotal}&nbsp;сом</Total>
       <Date>{currentDate}</Date>
     </Card>
   )
