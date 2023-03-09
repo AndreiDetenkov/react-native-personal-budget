@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react'
+import React, { FC } from 'react'
 import styled from 'styled-components'
 import { Image, Pressable, Text, useWindowDimensions, View } from 'react-native'
 import { useAppSelector } from '../../../app/store'
@@ -10,8 +10,6 @@ interface CategoryListProps {
 }
 
 export const CategoryList: FC<CategoryListProps> = ({ setCategoryId }): JSX.Element => {
-  const [selectedId, setSelectedId] = useState()
-
   const { width } = useWindowDimensions()
   const cardWidth = width / 2 - 32
 
